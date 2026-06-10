@@ -286,6 +286,22 @@
   .legal-links a{color:var(--accent);text-decoration:none;font-size:14px}
   .legal-links a:hover{text-decoration:underline}
   .legal-links span{color:#6e87a3}
+
+  /* HERO IMAGE */
+  .hero-image{margin:-26px auto 0;max-width:720px;padding:0 22px}
+  .hero-image figure{
+    position:relative;border-radius:22px;overflow:hidden;
+    border:1px solid var(--card-border);box-shadow:var(--shadow);
+    background:var(--card);
+  }
+  .hero-image img{display:block;width:100%;height:auto}
+  .hero-image figcaption{
+    position:absolute;bottom:0;right:0;left:0;
+    padding:30px 22px 16px;
+    background:linear-gradient(to top,rgba(8,18,30,.82),transparent);
+    color:#fff;font-size:15px;font-weight:600;text-align:center;
+    text-shadow:0 1px 6px rgba(0,0,0,.6);
+  }
 </style>
 </head>
 <body>
@@ -321,6 +337,14 @@
       <a href="#goals" class="btn btn-ghost">מה נרצה לקדם</a>
     </div>
   </header>
+
+  <!-- HERO IMAGE -->
+  <div class="hero-image">
+    <figure>
+      <img src="tzur-yitzhak-sign.jpg" alt="שלט הכניסה ליישוב צור יצחק — מועצה אזורית דרום השרון, נוסד 2007">
+      <figcaption>צור יצחק · מ.א. דרום השרון · נוסד 2007</figcaption>
+    </figure>
+  </div>
 
   <!-- GOALS -->
   <section id="goals" class="wrap">
