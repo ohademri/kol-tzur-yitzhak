@@ -155,6 +155,13 @@
   .checkbox-row{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--muted);margin-bottom:22px}
   .checkbox-row input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent)}
   .form-wrap .btn-primary{width:100%;justify-content:center}
+  .form-embed{
+    position:relative;width:100%;height:680px;
+    border-radius:14px;overflow:hidden;background:#fff;
+    border:1px solid var(--card-border);
+  }
+  .form-embed iframe{width:100%;height:100%;border:0;display:block}
+  @media(max-width:600px){.form-embed{height:760px}}
   .form-note{font-size:13px;color:var(--muted);text-align:center;margin-top:16px;line-height:1.6}
 
   .success{
@@ -240,43 +247,22 @@
     <h2 class="section-title">להצטרפות לקול צור יצחק</h2>
     <p class="section-sub">מלאו את טופס ההצטרפות ונחזור אליכם בהקדם.</p>
     <div class="form-wrap">
-      <form id="joinForm" novalidate>
-        <div class="form-row">
-          <div class="field">
-            <label for="fname">שם פרטי *</label>
-            <input id="fname" name="fname" type="text" required placeholder="ישראל">
-          </div>
-          <div class="field">
-            <label for="lname">שם משפחה *</label>
-            <input id="lname" name="lname" type="text" required placeholder="ישראלי">
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="field">
-            <label for="phone">טלפון *</label>
-            <input id="phone" name="phone" type="tel" required placeholder="050-0000000">
-          </div>
-          <div class="field">
-            <label for="email">דוא״ל</label>
-            <input id="email" name="email" type="email" placeholder="name@example.com">
-          </div>
-        </div>
-        <div class="field">
-          <label for="street">רחוב / אזור מגורים ביישוב</label>
-          <input id="street" name="street" type="text" placeholder="לדוגמה: רחוב הזית">
-        </div>
-        <div class="field">
-          <label for="interest">במה הייתם רוצים לקחת חלק? (אופציונלי)</label>
-          <textarea id="interest" name="interest" placeholder="ספרו לנו מה חשוב לכם או באילו נושאים תרצו להיות מעורבים..."></textarea>
-        </div>
-        <div class="checkbox-row">
-          <input id="consent" type="checkbox" required>
-          <label for="consent">אני מאשר/ת שהפרטים ישמשו את קהילת "קול צור יצחק" ליצירת קשר, שליחת עדכונים והפצת מידע הקשור לפעילות הקהילה. ניתן לבקש הסרה מרשימת התפוצה בכל עת.</label>
-        </div>
-        <button type="submit" class="btn btn-primary">שליחת טופס ההצטרפות</button>
-        <p class="form-note">זמן הטיפול בבקשות הצטרפות עשוי להימשך עד יום עבודה אחד.</p>
-      </form>
-      <div class="success" id="success">✓ תודה שהצטרפתם! קיבלנו את הפרטים שלכם ונחזור אליכם בהקדם.</div>
+      <div class="form-embed">
+        <iframe
+          title="טופס הצטרפות — קול צור יצחק"
+          src="https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR9XmhzCwmY1NufqMpYkyIMpURFE0UUs2VjdPT0lIMldIU1FPUzI4QVYxWi4u&embed=true"
+          frameborder="0"
+          marginwidth="0"
+          marginheight="0"
+          allowfullscreen
+          webkitallowfullscreen
+          mozallowfullscreen
+          msallowfullscreen>
+        </iframe>
+      </div>
+      <p class="form-note">לא רואים את הטופס? אפשר לפתוח אותו ישירות:</p>
+      <a href="https://forms.office.com/r/iN5vPaY2Qb" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:10px;">פתיחת טופס ההצטרפות בחלון חדש ←</a>
+      <p class="form-note">זמן הטיפול בבקשות הצטרפות עשוי להימשך עד יום עבודה אחד.</p>
     </div>
   </section>
 
@@ -308,18 +294,6 @@
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
-  const form = document.getElementById('joinForm');
-  const success = document.getElementById('success');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(!form.checkValidity()){
-      form.reportValidity();
-      return;
-    }
-    form.style.display = 'none';
-    success.style.display = 'block';
-    success.scrollIntoView({behavior:'smooth', block:'center'});
-  });
 </script>
 </body>
 </html>
