@@ -168,7 +168,7 @@
     background:linear-gradient(90deg,var(--accent),#1f8ddc);color:#fff;font-weight:800;
     display:flex;align-items:center;justify-content:center;font-size:18px;
   }
-  .step h4{font-size:17px;margin-bottom:2px}
+  .step h3{font-size:17px;margin-bottom:2px}
   .step p{color:var(--muted);font-size:15px}
 
   /* FORM */
@@ -324,7 +324,7 @@
 </head>
 <body>
 
-  <a href="#main" class="skip-link">דילוג לתוכן הראשי</a>
+  <a href="#content" class="skip-link">דילוג לתוכן הראשי</a>
 
   <!-- THEME TOGGLE -->
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה" title="מצב בהיר / כהה">
@@ -345,7 +345,7 @@
   </div>
 
   <!-- HERO -->
-  <header class="hero" id="main" tabindex="-1">
+  <header class="hero">
     <span class="badge">יוזמה קהילתית של תושבות ותושבים</span>
     <h1>קול צור יצחק</h1>
     <p class="sub">קהילה של תושבות ותושבים שפועלת למען עתיד היישוב</p>
@@ -355,6 +355,8 @@
       <a href="#goals" class="btn btn-ghost">מה נרצה לקדם</a>
     </div>
   </header>
+
+  <main id="content" tabindex="-1">
 
   <!-- HERO IMAGE -->
   <div class="hero-image">
@@ -404,10 +406,10 @@
     <h2 class="section-title">איפה ואיך נרשמים?</h2>
     <p class="section-sub">ארבעה צעדים פשוטים ואתם בפנים.</p>
     <div class="steps">
-      <div class="step"><span class="num">1</span><div><h4>ממלאים את הטופס</h4><p>לוחצים על כפתור ההרשמה וממלאים את הפרטים בטופס הקצר.</p></div></div>
-      <div class="step"><span class="num">2</span><div><h4>אנחנו בודקים</h4><p>עוברים על הפרטים שנמסרו — עד יום עבודה אחד.</p></div></div>
-      <div class="step"><span class="num">3</span><div><h4>מצרפים אתכם</h4><p>מוסיפים אתכם לרשימת העדכונים של קול צור יצחק.</p></div></div>
-      <div class="step"><span class="num">4</span><div><h4>נשארים בקשר</h4><p>מקבלים עדכונים, הזמנות למפגשים ואפשרות להשתתף בפעילות.</p></div></div>
+      <div class="step"><span class="num">1</span><div><h3>ממלאים את הטופס</h3><p>לוחצים על כפתור ההרשמה וממלאים את הפרטים בטופס הקצר.</p></div></div>
+      <div class="step"><span class="num">2</span><div><h3>אנחנו בודקים</h3><p>עוברים על הפרטים שנמסרו — עד יום עבודה אחד.</p></div></div>
+      <div class="step"><span class="num">3</span><div><h3>מצרפים אתכם</h3><p>מוסיפים אתכם לרשימת העדכונים של קול צור יצחק.</p></div></div>
+      <div class="step"><span class="num">4</span><div><h3>נשארים בקשר</h3><p>מקבלים עדכונים, הזמנות למפגשים ואפשרות להשתתף בפעילות.</p></div></div>
     </div>
   </section>
 
@@ -443,6 +445,8 @@
     <div class="brand">קול צור יצחק</div>
     <p class="tag">יחד בונים את העתיד.</p>
   </section>
+
+  </main>
 
   <footer>
     © <span id="year"></span> קול צור יצחק — יוזמה קהילתית של תושבות ותושבים
