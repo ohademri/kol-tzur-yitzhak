@@ -304,6 +304,22 @@
     color:#fff;font-size:15px;font-weight:600;text-align:center;
     text-shadow:0 1px 6px rgba(0,0,0,.6);
   }
+
+  /* ABOUT */
+  .about-card{
+    max-width:760px;margin:0 auto;text-align:center;
+    background:linear-gradient(180deg,var(--card),var(--bg2));
+    border:1px solid var(--card-border);border-radius:22px;
+    padding:36px 32px;box-shadow:var(--shadow);position:relative;
+  }
+  .about-card .mark{
+    width:56px;height:56px;border-radius:16px;margin:0 auto 18px;
+    display:flex;align-items:center;justify-content:center;font-size:28px;
+    background:var(--accent-soft);border:1px solid var(--card-border);
+  }
+  .about-card p{font-size:18.5px;color:var(--text);line-height:1.85}
+  .about-card p .hl{color:var(--accent);font-weight:700}
+  .about-card .quote{color:var(--muted);font-size:16px;margin-top:14px;font-style:italic}
 </style>
 </head>
 <body>
@@ -347,6 +363,16 @@
       <figcaption>צור יצחק · מ.א. דרום השרון · נוסד 2007</figcaption>
     </figure>
   </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
+    <h2 class="section-title">מי אנחנו?</h2>
+    <div class="about-card">
+      <div class="mark">🤝</div>
+      <p>אנחנו קבוצה של <span class="hl">תושבות ותושבים שאכפת להם</span> — אנשים שבחרו לקום ולעשות, מתוך אהבה לצור יצחק ואמונה שאפשר אחרת. התארגנו יחד כדי להשפיע, לחזק את הקהילה ולקדם חזון משותף לעתיד היישוב.</p>
+      <p class="quote">לא מחכים שמישהו אחר יעשה — לוקחים אחריות, ביחד.</p>
+    </div>
+  </section>
 
   <!-- GOALS -->
   <section id="goals" class="wrap">
