@@ -213,7 +213,9 @@
     padding:26px 26px;max-width:820px;margin:0 auto;color:var(--muted);font-size:15.5px;
   }
   .privacy h3{color:var(--text);margin-bottom:10px;font-size:20px}
-  .privacy ul{margin:10px 22px 0;display:grid;gap:6px}
+  .privacy ul{margin:10px 22px 0;display:grid;gap:6px;list-style:none}
+  .privacy ul li{position:relative;padding-right:18px}
+  .privacy ul li::before{content:"•";position:absolute;right:0;color:var(--accent)}
 
   /* CLOSING */
   .closing{
@@ -374,9 +376,9 @@
       <h3>פרטיות ושימוש במידע</h3>
       <p>הפרטים שתמסרו ישמשו לצורך פעילות קהילת <strong>קול צור יצחק</strong>:</p>
       <ul>
-        <li>• יצירת קשר עם התושבים</li>
-        <li>• שליחת עדכונים על פעילות הקהילה</li>
-        <li>• הפצת מידע הקשור לפעילות ולמפגשים</li>
+        <li>יצירת קשר עם התושבים</li>
+        <li>שליחת עדכונים על פעילות הקהילה</li>
+        <li>הפצת מידע הקשור לפעילות ולמפגשים</li>
       </ul>
       <div class="divider"></div>
       <p>ניתן לבקש הסרה מרשימת התפוצה בכל עת. זמן הטיפול בבקשות הצטרפות עשוי להימשך עד יום עבודה אחד.</p>
