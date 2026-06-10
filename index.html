@@ -226,17 +226,90 @@
 
   footer{text-align:center;padding:30px 22px;color:#6e87a3;font-size:14px;border-top:1px solid var(--card-border)}
   .divider{height:1px;background:linear-gradient(90deg,transparent,var(--card-border),transparent);max-width:200px;margin:26px auto}
+
+  /* ===== ACCESSIBILITY ===== */
+  .skip-link{
+    position:absolute;right:-9999px;top:0;z-index:200;
+    background:var(--accent);color:#fff;padding:12px 22px;border-radius:0 0 10px 0;
+    font-weight:700;font-size:16px;text-decoration:none;
+  }
+  .skip-link:focus{right:0}
+  a:focus-visible,button:focus-visible,input:focus-visible,
+  textarea:focus-visible,select:focus-visible,iframe:focus-visible{
+    outline:3px solid var(--accent);outline-offset:3px;border-radius:6px;
+  }
+  /* Accessibility widget */
+  .a11y-btn{
+    position:fixed;bottom:20px;left:20px;z-index:120;
+    width:52px;height:52px;border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--accent);color:#fff;border:2px solid #fff3;
+    font-size:26px;box-shadow:var(--shadow);
+    transition:transform .15s ease;
+  }
+  .a11y-btn:hover{transform:scale(1.07)}
+  .a11y-panel{
+    position:fixed;bottom:84px;left:20px;z-index:120;width:262px;
+    background:var(--card);border:1px solid var(--card-border);border-radius:16px;
+    box-shadow:var(--shadow);padding:16px;display:none;
+  }
+  .a11y-panel.open{display:block}
+  .a11y-panel h3{font-size:16px;margin-bottom:12px;text-align:center;color:var(--text)}
+  .a11y-panel button{
+    width:100%;display:flex;align-items:center;gap:10px;justify-content:flex-start;
+    background:var(--field-bg);border:1px solid var(--card-border);color:var(--text);
+    border-radius:10px;padding:11px 13px;margin-bottom:8px;font-size:15px;
+    font-family:inherit;cursor:pointer;transition:border-color .15s ease,background .15s ease;
+  }
+  .a11y-panel button:hover{border-color:var(--accent);background:var(--accent-soft)}
+  .a11y-panel button.active{border-color:var(--accent);background:var(--accent-soft);font-weight:700}
+  .a11y-panel .row{display:flex;gap:8px}
+  .a11y-panel .row button{justify-content:center}
+  .a11y-panel .reset{background:transparent;color:var(--muted);justify-content:center;margin-top:4px}
+
+  /* High-contrast mode */
+  html.a11y-hc{
+    --bg:#000;--bg2:#000;--card:#000;--card-border:#ffffff;
+    --text:#ffffff;--muted:#ffffff;--accent:#ffeb00;--accent2:#ffeb00;
+    --accent-soft:#1a1a00;--shadow:0 0 0 1px #fff;--body-glow:#000;
+    --hero-sub:#ffffff;--field-bg:#000;
+  }
+  html.a11y-hc .hero h1{background:none;-webkit-text-fill-color:#ffeb00;color:#ffeb00}
+  html.a11y-hc .btn-primary{background:#ffeb00;color:#000}
+  html.a11y-hc .check,html.a11y-hc .step .num{background:#ffeb00;color:#000}
+  /* Highlight links */
+  html.a11y-links a:not(.btn){text-decoration:underline !important;text-underline-offset:3px}
+  /* Links footer */
+  .legal-links{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .legal-links a{color:var(--accent);text-decoration:none;font-size:14px}
+  .legal-links a:hover{text-decoration:underline}
+  .legal-links span{color:#6e87a3}
 </style>
 </head>
 <body>
+
+  <a href="#main" class="skip-link">דילוג לתוכן הראשי</a>
 
   <!-- THEME TOGGLE -->
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="החלפת מצב תצוגה בהיר/כהה" title="מצב בהיר / כהה">
     <span class="moon">🌙</span><span class="sun">☀️</span>
   </button>
 
+  <!-- ACCESSIBILITY WIDGET -->
+  <button class="a11y-btn" id="a11yBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-label="תפריט נגישות" title="תפריט נגישות">♿</button>
+  <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="הגדרות נגישות">
+    <h3>הגדרות נגישות</h3>
+    <div class="row">
+      <button type="button" id="fontDown" aria-label="הקטנת טקסט">א−</button>
+      <button type="button" id="fontUp" aria-label="הגדלת טקסט">א+</button>
+    </div>
+    <button type="button" id="hcToggle">🌗 ניגודיות גבוהה</button>
+    <button type="button" id="linksToggle">🔗 הדגשת קישורים</button>
+    <button type="button" id="a11yReset" class="reset">↺ איפוס הגדרות</button>
+  </div>
+
   <!-- HERO -->
-  <header class="hero">
+  <header class="hero" id="main" tabindex="-1">
     <span class="badge">יוזמה קהילתית של תושבות ותושבים</span>
     <h1>קול צור יצחק</h1>
     <p class="sub">קהילה של תושבות ותושבים שפועלת למען עתיד היישוב</p>
@@ -332,6 +405,11 @@
 
   <footer>
     © <span id="year"></span> קול צור יצחק — יוזמה קהילתית של תושבות ותושבים
+    <div class="legal-links">
+      <a href="accessibility.html">הצהרת נגישות</a>
+      <span>·</span>
+      <a href="privacy.html">מדיניות פרטיות</a>
+    </div>
   </footer>
 
 <script>
@@ -348,6 +426,61 @@
       const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       root.setAttribute('data-theme', next);
       localStorage.setItem('ktz-theme', next);
+    });
+  })();
+
+  /* Accessibility widget */
+  (function(){
+    const root = document.documentElement;
+    const a11yBtn = document.getElementById('a11yBtn');
+    const panel = document.getElementById('a11yPanel');
+    const hcBtn = document.getElementById('hcToggle');
+    const linksBtn = document.getElementById('linksToggle');
+    let zoom = parseFloat(localStorage.getItem('ktz-zoom')) || 1;
+
+    function applyZoom(){
+      document.body.style.zoom = zoom;
+      localStorage.setItem('ktz-zoom', zoom);
+    }
+    function syncButtons(){
+      hcBtn.classList.toggle('active', root.classList.contains('a11y-hc'));
+      linksBtn.classList.toggle('active', root.classList.contains('a11y-links'));
+    }
+
+    if(localStorage.getItem('ktz-hc') === '1') root.classList.add('a11y-hc');
+    if(localStorage.getItem('ktz-links') === '1') root.classList.add('a11y-links');
+    if(zoom !== 1) applyZoom();
+    syncButtons();
+
+    a11yBtn.addEventListener('click', function(){
+      const open = panel.classList.toggle('open');
+      a11yBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.addEventListener('click', function(e){
+      if(!panel.contains(e.target) && e.target !== a11yBtn){
+        panel.classList.remove('open');
+        a11yBtn.setAttribute('aria-expanded','false');
+      }
+    });
+    document.getElementById('fontUp').addEventListener('click', function(){
+      zoom = Math.min(1.5, Math.round((zoom + 0.1) * 10) / 10); applyZoom();
+    });
+    document.getElementById('fontDown').addEventListener('click', function(){
+      zoom = Math.max(0.9, Math.round((zoom - 0.1) * 10) / 10); applyZoom();
+    });
+    hcBtn.addEventListener('click', function(){
+      const on = root.classList.toggle('a11y-hc');
+      localStorage.setItem('ktz-hc', on ? '1' : '0'); syncButtons();
+    });
+    linksBtn.addEventListener('click', function(){
+      const on = root.classList.toggle('a11y-links');
+      localStorage.setItem('ktz-links', on ? '1' : '0'); syncButtons();
+    });
+    document.getElementById('a11yReset').addEventListener('click', function(){
+      zoom = 1; applyZoom();
+      root.classList.remove('a11y-hc','a11y-links');
+      localStorage.removeItem('ktz-hc'); localStorage.removeItem('ktz-links');
+      syncButtons();
     });
   })();
 </script>
